@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>Alistair & Sophie | Save the date</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="./img/favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway&display=swap" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-2">
+    <div class="row justify-content-between text-warning text-right" style="font-family: 'Dancing Script', cursive;">
+        <div class="col-sm-12 col-md-1 mb-2">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label id="btn-en" class="btn btn-secondary lang-switch" data-locale="en">
+                    <input type="radio" name="options" id="option1" autocomplete="off">
+                    <span class="flag-icon flag-icon-gb-sct">
+                </label>
+                <label id="btn-de" class="btn btn-secondary lang-switch" data-locale="de">
+                    <input type="radio" name="options" id="option1" autocomplete="off">
+                    <span class="flag-icon flag-icon-at">
+                </label>
+            </div>
+        </div>
+        <div class="col-md-auto col-sm-12 bg-transparent-black">
+            <h1 class="font-weight-bold display-1" data-i18n="welcome"></h1>
+            <h3 class="font-weight-light" data-i18n="welcome-sub"></h3>
+        </div>
+    </div>
+    <div class="row justify-content-end text-right text-white font-weight-light" style="margin-top:300px">
+        <div class="col-auto bg-transparent-black p-3" style="font-family: 'Raleway', sans-serif;">
+            <h5 data-i18n="names"></h5>
+            <h5><a href="https://goo.gl/maps/p5DzVBPtu2onGW8Q7" target="_blank" data-i18n="location"></a></h5>
+            <h5 data-i18n="[html]date"></h5>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.i18n/1.0.5/jquery.i18n.min.js"></script>
+<script src="jquery_i18n/CLDRPluralRuleParser.js"></script>
+<script src="jquery_i18n/jquery.i18n.js"></script>
+<script src="jquery_i18n/jquery.i18n.messagestore.js"></script>
+<script src="jquery_i18n/jquery.i18n.fallbacks.js"></script>
+<script src="jquery_i18n/jquery.i18n.language.js"></script>
+<script src="jquery_i18n/jquery.i18n.parser.js"></script>
+<script src="jquery_i18n/jquery.i18n.emitter.js"></script>
+<script src="jquery_i18n/jquery.i18n.emitter.bidi.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        
+        var update_texts = function() {
+            $('body').i18n();
+        };
+
+        $('.lang-switch').click(function(e) {
+            e.preventDefault();
+            $.i18n().locale = $(this).data('locale');
+            update_texts();
+        });
+
+        $.i18n().load({
+            'en': {
+                'welcome': "We're getting married",
+                'welcome-sub': 'Come join us when we make it official!',
+                'names': 'Alistair Martin and Sophie Tiefenbacher',
+                'location': 'Kottingbrunn, Austria',
+                'date': 'August 1<sup>st</sup> 2020<br><br>Invitations and details to follow',
+            },
+            'de': {
+                'welcome': "Wir heiraten",
+                'welcome-sub': 'Seid dabei, wenn wir es offiziell machen!',
+                'names': 'Sophie Tiefenbacher und Alistair Martin',
+                'location': 'Kottingbrunn, Österreich',
+                'date': '1. August 2020<br><br>Einladungen und Details folgen',
+            }
+        });
+
+        function getLang(){
+            if (navigator.languages != undefined) 
+                return navigator.languages[0]; 
+            else 
+                return navigator.language;
+        }
+
+        if(getLang().substring(0,2) === "de") {
+            $.i18n().locale = "de";
+            $("#btn-de").addClass("active");
+        } else {
+            $.i18n().locale = "en";
+            $("#btn-en").addClass("active");
+        }
+
+        update_texts();
+    });
+</script>
+</html>
+

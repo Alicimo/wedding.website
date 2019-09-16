@@ -1,0 +1,28 @@
+html,
+body {
+    background: url('img/background.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bg-transparent-black {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none!important;
+}
+
+.btn.active, .btn:active {
+    background: #ffc107!important;
+}
+
+html { font-size: 10px; }
+
+@media (min-width: 768px) {
+    html { font-size: 12px; }
+}
+
