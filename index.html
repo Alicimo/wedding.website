@@ -10,6 +10,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway&display=swap" rel="stylesheet">
     <link href="custom.css" rel="stylesheet">
+    <script>
+        var password = "hitched"; // Oh no, you found me. Enjoy the sneak peak of my wedding.
+        function promptPass(){
+            var psw = window.prompt("Enter your Password");
+
+            while (psw.toLowerCase() !== password) {
+                alert("Incorrect Password");
+                return promptPass();
+            }
+        };
+        promptPass(); 
+    </script>
 </head>
 
 <body>
@@ -57,10 +69,11 @@
 <script src="jquery_i18n/jquery.i18n.parser.js"></script>
 <script src="jquery_i18n/jquery.i18n.emitter.js"></script>
 <script src="jquery_i18n/jquery.i18n.emitter.bidi.js"></script>
+
 <script>
     jQuery(document).ready(function() {
         
-        var update_texts = function() {
+       var update_texts = function() {
             $('body').i18n();
         };
 
